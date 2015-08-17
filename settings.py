@@ -24,8 +24,8 @@ import os
 # Heroku, sensible DB connection settings are stored in environment variables.
 MONGO_HOST = os.environ.get('MONGO_HOST', 'localhost')
 MONGO_PORT = os.environ.get('MONGO_PORT', 27017)
-#MONGO_USERNAME = os.environ.get('MONGO_USERNAME', 'user')
-#MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', 'user')
+MONGO_USERNAME = os.environ.get('MONGO_USERNAME', 'user')
+MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', 'user')
 MONGO_DBNAME = os.environ.get('MONGO_DBNAME', 'evedemo')
 
 
@@ -43,9 +43,54 @@ ITEM_METHODS = ['GET', 'PATCH', 'DELETE']
 CACHE_CONTROL = 'max-age=20'
 CACHE_EXPIRES = 20
 
+PUBLIC_METHODS = ['GET']
+PUBLIC_ITEM_METHODS = ['GET']
+
 # Our API will expose two resources (MongoDB collections): 'people' and
 # 'works'. In order to allow for proper data validation, we define beaviour
 # and structure.
+
+torneos = {
+    'schema': {
+        'nombre': {'type': 'string'},
+        'ediciones': {
+            'type': 'list',
+            'schema': {
+                'type': 'dict',
+                'schema': {
+                    'nombre': {'type': 'string'},
+                    'fecha' : 'datetime',
+                    'pruebas': {
+                        'type': 'list',
+                        'schema': {
+                            'type' : 'dict',
+                            'schema' : {
+                                'nombre': {'type': 'string'},
+                                'genero': {'type': 'string', 'allowed': ['Masculino', 'Femenino', 'Mixto']},
+                                'atletas': {
+                                    'type' : 'list',
+                                    'schema' :{
+                                        'type': "dict",
+                                        'schema':{
+                                            'nombre' : {'type': 'objectid'},
+                                            'carril': {'type': 'integer'},
+                                            'hit': {'type': 'integer'},
+                                            'tiempo_Registro': {'type': 'float'},
+                                            'tiempo_Realizado': {'type': 'float'},
+                                            'puntos': {'type': 'integer'}
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 people = {
     # 'title' tag used in item links.
     'item_title': 'person',
@@ -133,4 +178,5 @@ works = {
 DOMAIN = {
     'people': people,
     'works': works,
+    'torneos':torneos
 }
