@@ -17,6 +17,7 @@
 
 import os
 from eve import Eve
+from flask_sslify import SSLify
 
 # Heroku support: bind to PORT if defined, otherwise default to 5000.
 if 'PORT' in os.environ:
@@ -29,13 +30,8 @@ else:
     host = '127.0.0.1'
 
 app = Eve()
-
-
-@app.after_request
-def after_request(response):
-    response.headers.add('X-Ahmed', 'Je Suis Ahmed.')
-    response.headers.add('X-Charlie', 'Je Suis Charlie.')
-    return response
+if 'DYNO' in os.environ: # only trigger SSLify if the app is running on Heroku
+    sslify = SSLify(app,permanent=True)
 
 if __name__ == '__main__':
     app.run(host=host, port=port)
