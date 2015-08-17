@@ -49,7 +49,7 @@ PUBLIC_ITEM_METHODS = ['GET']
 # Our API will expose two resources (MongoDB collections): 'people' and
 # 'works'. In order to allow for proper data validation, we define beaviour
 # and structure.
-
+"""
 torneos = {
     'schema': {
         'nombre': {'type': 'string'},
@@ -89,7 +89,106 @@ torneos = {
         }
     }
 }
+"""
 
+torneos = {
+    "schema":{
+        "Nombre":{"type":"string"}
+    }
+}
+
+ediciones = {
+    'item_title': 'edicion',
+    "schema":{
+        "Nombre": {"type":"string"},
+        'Torneo': {
+            'type': 'objectid',
+            'data_relation': {
+                'resource': 'torneos',
+                'field': '_id',
+                'embeddable': True
+            },
+        },
+        "fecha":{"type":"datetime"}
+    }
+}
+
+pruebas = {
+    "schema":{
+        "Nombre":{"type":"string"},
+        "Genero":{"type":"string", 'allowed': ['Masculino', 'Femenino', 'Mixto']}
+    }
+}
+
+atletaNombres = {
+    "schema":{
+        "Nombre":{"type":"string"},
+        "Apellido1":{"type":"string"},
+        "Apellido2":{"type":"string"}
+    }
+}
+
+atletas = {
+    "schema":{
+        'Nombre': {
+            'type': 'objectid',
+            'data_relation': {
+                'resource': 'atletaNombres',
+                'field': '_id',
+                'embeddable': True
+            },
+        },
+        "Cedula":{"type":"string"},
+        "Carrera":{"type":"string"},
+        "FechaNacimiento":{"type":"datetime"},
+        "Genero":{"type":"string","allowed":["Masculino", "Femenino"]},
+        "Lateralidad":{"type":"string","allowed":["Izquierda","Derecha"]},
+        "TipoSangre":{"type":"string","allowed":["A+","A-","B+","B-","AB+","AB-","O+","O-"]},
+        "Peso":{"type":"Number"},
+        "Estatura":{"type":"string"},
+        "Beneficiario":{
+            "type":"dict",
+            "schema":{
+                "Nombre":{"type":"string"},
+                "Cedula":{"type":"string"}
+            }
+        }
+    }
+}
+
+resultados = {
+    "schema":{
+        'Atleta': {
+            'type': 'objectid',
+            'data_relation': {
+                'resource': 'atletaNombres',
+                'field': '_id',
+                'embeddable': True
+            },
+        },
+        'Prueba': {
+            'type': 'objectid',
+            'data_relation': {
+                'resource': 'pruebas',
+                'field': '_id',
+                'embeddable': True
+            },
+        },
+        'Edicion': {
+            'type': 'objectid',
+            'data_relation': {
+                'resource': 'ediciones',
+                'field': '_id',
+                'embeddable': True
+            },
+        },
+        "Carril": {"type":"Number"},
+        "Hit": {"type":"Number"},
+        "TiempoRegistro": {"type":"Number"},
+        "TiempoRealizado": {"type":"Number"},
+        "Puntos": {"type":"Number"}
+    }
+}
 
 people = {
     # 'title' tag used in item links.
@@ -178,5 +277,11 @@ works = {
 DOMAIN = {
     'people': people,
     'works': works,
-    'torneos':torneos
+    'torneos':torneos,
+    "ediciones":ediciones,
+    "torneos":torneos,
+    "atleta":atletas,
+    "atletaNombre":atletaNombres,
+    "pruebas":pruebas,
+    "resultados":resultados
 }
