@@ -59,7 +59,7 @@ torneos = {
                 'type': 'dict',
                 'schema': {
                     'nombre': {'type': 'string'},
-                    'fecha' : 'datetime',
+                    'fecha' : {'type':'datetime'},
                     'pruebas': {
                         'type': 'list',
                         'schema': {
