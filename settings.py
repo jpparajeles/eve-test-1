@@ -24,8 +24,8 @@ import os
 # Heroku, sensible DB connection settings are stored in environment variables.
 MONGO_HOST = os.environ.get('MONGO_HOST', 'localhost')
 MONGO_PORT = os.environ.get('MONGO_PORT', 27017)
-MONGO_USERNAME = os.environ.get('MONGO_USERNAME', 'user')
-MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', 'user')
+# MONGO_USERNAME = os.environ.get('MONGO_USERNAME', 'user')
+# MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', 'user')
 MONGO_DBNAME = os.environ.get('MONGO_DBNAME', 'evedemo')
 
 
@@ -49,58 +49,16 @@ PUBLIC_ITEM_METHODS = ['GET']
 # Our API will expose two resources (MongoDB collections): 'people' and
 # 'works'. In order to allow for proper data validation, we define beaviour
 # and structure.
-"""
 torneos = {
-    'schema': {
-        'nombre': {'type': 'string'},
-        'ediciones': {
-            'type': 'list',
-            'schema': {
-                'type': 'dict',
-                'schema': {
-                    'nombre': {'type': 'string'},
-                    'fecha' : {'type':'datetime'},
-                    'pruebas': {
-                        'type': 'list',
-                        'schema': {
-                            'type' : 'dict',
-                            'schema' : {
-                                'nombre': {'type': 'string'},
-                                'genero': {'type': 'string', 'allowed': ['Masculino', 'Femenino', 'Mixto']},
-                                'atletas': {
-                                    'type' : 'list',
-                                    'schema' :{
-                                        'type': "dict",
-                                        'schema':{
-                                            'nombre' : {'type': 'objectid'},
-                                            'carril': {'type': 'integer'},
-                                            'hit': {'type': 'integer'},
-                                            'tiempo_Registro': {'type': 'float'},
-                                            'tiempo_Realizado': {'type': 'float'},
-                                            'puntos': {'type': 'integer'}
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-"""
-
-torneos = {
-    "schema":{
-        "Nombre":{"type":"string"}
+    "schema": {
+        "Nombre": {"type": "string"}
     }
 }
 
 ediciones = {
     'item_title': 'edicion',
-    "schema":{
-        "Nombre": {"type":"string"},
+    "schema": {
+        "Nombre": {"type": "string"},
         'Torneo': {
             'type': 'objectid',
             'data_relation': {
@@ -109,27 +67,28 @@ ediciones = {
                 'embeddable': True
             },
         },
-        "fecha":{"type":"datetime"}
+        "fecha": {"type": "datetime"}
     }
 }
 
 pruebas = {
-    "schema":{
-        "Nombre":{"type":"string"},
-        "Genero":{"type":"string", 'allowed': ['Masculino', 'Femenino', 'Mixto']}
+    "schema": {
+        "Nombre": {"type": "string"},
+        "Genero": {"type": "string", 'allowed': ['Masculino', 'Femenino', 'Mixto']}
     }
 }
 
 atletaNombres = {
-    "schema":{
-        "Nombre":{"type":"string"},
-        "Apellido1":{"type":"string"},
-        "Apellido2":{"type":"string"}
+    "schema": {
+        "Nombre": {"type": "string"},
+        "Apellido1": {"type": "string"},
+        "Apellido2": {"type": "string"},
+        "Imagen": {"type": "string"}
     }
 }
 
 atletas = {
-    "schema":{
+    "schema": {
         'Nombre': {
             'type': 'objectid',
             'data_relation': {
@@ -138,26 +97,26 @@ atletas = {
                 'embeddable': True
             },
         },
-        "Cedula":{"type":"string"},
-        "Carrera":{"type":"string"},
-        "FechaNacimiento":{"type":"datetime"},
-        "Genero":{"type":"string","allowed":["Masculino", "Femenino"]},
-        "Lateralidad":{"type":"string","allowed":["Izquierda","Derecha"]},
-        "TipoSangre":{"type":"string","allowed":["A+","A-","B+","B-","AB+","AB-","O+","O-"]},
-        "Peso":{"type":"Number"},
-        "Estatura":{"type":"string"},
-        "Beneficiario":{
-            "type":"dict",
-            "schema":{
-                "Nombre":{"type":"string"},
-                "Cedula":{"type":"string"}
+        "Cedula": {"type": "string"},
+        "Carrera": {"type": "string"},
+        "FechaNacimiento": {"type": "datetime"},
+        "Genero": {"type": "string", "allowed": ["Masculino", "Femenino"]},
+        "Lateralidad": {"type": "string", "allowed": ["Izquierda", "Derecha"]},
+        "TipoSangre": {"type": "string", "allowed": ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]},
+        "Peso": {"type": "Number"},
+        "Estatura": {"type": "string"},
+        "Beneficiario": {
+            "type": "dict",
+            "schema": {
+                "Nombre": {"type": "string"},
+                "Cedula": {"type": "string"}
             }
         }
     }
 }
 
 resultados = {
-    "schema":{
+    "schema": {
         'Atleta': {
             'type': 'objectid',
             'data_relation': {
@@ -182,11 +141,11 @@ resultados = {
                 'embeddable': True
             },
         },
-        "Carril": {"type":"Number"},
-        "Hit": {"type":"Number"},
-        "TiempoRegistro": {"type":"Number"},
-        "TiempoRealizado": {"type":"Number"},
-        "Puntos": {"type":"Number"}
+        "Carril": {"type": "Number"},
+        "Hit": {"type": "Number"},
+        "TiempoRegistro": {"type": "Number"},
+        "TiempoRealizado": {"type": "Number"},
+        "Puntos": {"type": "Number"}
     }
 }
 
@@ -242,7 +201,7 @@ people = {
 works = {
     # if 'item_title' is not provided Eve will just strip the final
     # 's' from resource name, and use it as the item_title.
-    #'item_title': 'work',
+    # 'item_title': 'work',
 
     # We choose to override global cache-control directives for this resource.
     'cache_control': 'max-age=10,must-revalidate',
@@ -275,13 +234,13 @@ works = {
 # The DOMAIN dict explains which resources will be available and how they will
 # be accessible to the API consumer.
 DOMAIN = {
-    'people': people,
-    'works': works,
-    'torneos':torneos,
-    "ediciones":ediciones,
-    "torneos":torneos,
-    "atleta":atletas,
-    "atletaNombre":atletaNombres,
-    "pruebas":pruebas,
-    "resultados":resultados
+    # 'people': people,
+    # 'works': works,
+    'torneos': torneos,
+    "ediciones": ediciones,
+    "torneos": torneos,
+    "atleta": atletas,
+    "atletaNombre": atletaNombres,
+    "pruebas": pruebas,
+    "resultados": resultados
 }

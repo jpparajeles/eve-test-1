@@ -1,2 +1,3 @@
 Eve==0.5.2
 Flask-SSLify
+py-bcrypt
