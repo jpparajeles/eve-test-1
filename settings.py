@@ -54,7 +54,7 @@ ALLOWED_ITEM_READ_ROLES = ["User","Super","Master"]
 ALLOWED_WRITE_ROLES = ["Super", "Master"]
 ALLOWED_ITEM_WRITE_ROLES = ["Super", "Master"]
 
-
+X_DOMAINS = "*"
 
 
 # Our API will expose two resources (MongoDB collections): 'people' and
