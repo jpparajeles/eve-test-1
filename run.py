@@ -50,7 +50,7 @@ else:
 
 app = Eve(auth=RolesAuth)
 if 'DYNO' in os.environ: # only trigger SSLify if the app is running on Heroku
-    sslify = SSLify(app,permanent=True)
+    sslify = SSLify(app,permanent=True, subdomains=True)
 
 # app.on_pre_POST_anvandaren += custom.pre_anvandaren_post_callback
 app.on_insert_anvandaren += custom.ch_pass
