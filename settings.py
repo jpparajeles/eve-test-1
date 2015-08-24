@@ -78,7 +78,7 @@ ediciones = {
                 'embeddable': True
             },
         },
-        "fecha": {"type": "datetime"}
+        "fecha": {"type": "string"}
     }
 }
 
@@ -89,12 +89,13 @@ pruebas = {
     }
 }
 
-atletaNombres = {
+atletanombres = {
     "schema": {
         "Nombre": {"type": "string"},
         "Apellido1": {"type": "string"},
         "Apellido2": {"type": "string"},
-        "Imagen": {"type": "string"}
+        "Imagen": {"type": "string"},
+        "Carrera": {"type": "string"}
     }
 }
 
@@ -103,19 +104,19 @@ atletas = {
         'Nombre': {
             'type': 'objectid',
             'data_relation': {
-                'resource': 'atletaNombres',
+                'resource': 'atletanombres',
                 'field': '_id',
                 'embeddable': True
             },
         },
         "Cedula": {"type": "string"},
-        "Carrera": {"type": "string"},
-        "FechaNacimiento": {"type": "datetime"},
+        "Telefonos":{"type":"list","schema": {"type": "integer"}},
+        "FechaNacimiento": {"type": "string"},
         "Genero": {"type": "string", "allowed": ["Masculino", "Femenino"]},
         "Lateralidad": {"type": "string", "allowed": ["Izquierda", "Derecha"]},
         "TipoSangre": {"type": "string", "allowed": ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]},
         "Peso": {"type": "Number"},
-        "Estatura": {"type": "string"},
+        "Estatura": {"type": "Number"},
         "Beneficiario": {
             "type": "dict",
             "schema": {
@@ -131,7 +132,7 @@ resultados = {
         'Atleta': {
             'type': 'objectid',
             'data_relation': {
-                'resource': 'atletaNombres',
+                'resource': 'atletanombres',
                 'field': '_id',
                 'embeddable': True
             },
@@ -265,8 +266,8 @@ DOMAIN = {
     'torneos': torneos,
     "ediciones": ediciones,
     "torneos": torneos,
-    "atleta": atletas,
-    "atletaNombre": atletaNombres,
+    "atletas": atletas,
+    "atletanombres": atletanombres,
     "pruebas": pruebas,
     "resultados": resultados,
     "anvandaren":anvandaren
