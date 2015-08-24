@@ -24,8 +24,8 @@ import os
 # Heroku, sensible DB connection settings are stored in environment variables.
 MONGO_HOST = os.environ.get('MONGO_HOST', 'localhost')
 MONGO_PORT = os.environ.get('MONGO_PORT', 27017)
-# MONGO_USERNAME = os.environ.get('MONGO_USERNAME', 'user')
-# MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', 'user')
+MONGO_USERNAME = os.environ.get('MONGO_USERNAME', 'user')
+MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', 'user')
 MONGO_DBNAME = os.environ.get('MONGO_DBNAME', 'evedemo')
 
 
@@ -43,8 +43,19 @@ ITEM_METHODS = ['GET', 'PATCH', 'DELETE']
 CACHE_CONTROL = 'max-age=20'
 CACHE_EXPIRES = 20
 
+# Public Read
 PUBLIC_METHODS = ['GET']
 PUBLIC_ITEM_METHODS = ['GET']
+
+# All Read Roles
+ALLOWED_READ_ROLES = ["User","Super","Master"]
+ALLOWED_ITEM_READ_ROLES = ["User","Super","Master"]
+# Elevated Write Roles
+ALLOWED_WRITE_ROLES = ["Super", "Master"]
+ALLOWED_ITEM_WRITE_ROLES = ["Super", "Master"]
+
+
+
 
 # Our API will expose two resources (MongoDB collections): 'people' and
 # 'works'. In order to allow for proper data validation, we define beaviour
@@ -149,6 +160,19 @@ resultados = {
     }
 }
 
+anvandaren = {
+    "schema":{
+        "anvandarnamn":{"type":"string",'unique': True, 'minlength': 5},
+        "losenord":{"type":"string"},
+        "roll":{"type":"string", "allowed":["User","Super","Master"]}
+    },
+    "allowed_roles":["Master"],
+    "allowed_write_roles":["Master"],
+    "public_methods":[],
+    "public_item_methods":[]
+}
+
+"""
 people = {
     # 'title' tag used in item links.
     'item_title': 'person',
@@ -230,6 +254,8 @@ works = {
         },
     }
 }
+"""
+
 
 # The DOMAIN dict explains which resources will be available and how they will
 # be accessible to the API consumer.
@@ -242,5 +268,6 @@ DOMAIN = {
     "atleta": atletas,
     "atletaNombre": atletaNombres,
     "pruebas": pruebas,
-    "resultados": resultados
+    "resultados": resultados,
+    "anvandaren":anvandaren
 }

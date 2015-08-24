@@ -16,8 +16,27 @@
 """
 
 import os
+import bcrypt
 from eve import Eve
+from eve.auth import BasicAuth
 from flask_sslify import SSLify
+import custom
+
+class RolesAuth(BasicAuth):
+    def check_auth(self, username, password, allowed_roles, resource, method):
+        # use Eve's own db driver; no additional connections/resources are used
+        print(username)
+        print(password)
+        accounts = app.data.driver.db['anvandaren']
+        lookup = {'anvandarnamn': username}
+        if allowed_roles:
+            # only retrieve a user if his roles match ``allowed_roles``
+            lookup['roll'] = {'$in': allowed_roles}
+        account = accounts.find_one(lookup)
+        return account and bcrypt.hashpw(password, account['losenord']) == account['losenord']
+
+
+
 
 # Heroku support: bind to PORT if defined, otherwise default to 5000.
 if 'PORT' in os.environ:
@@ -29,9 +48,11 @@ else:
     port = 5000
     host = '127.0.0.1'
 
-app = Eve()
+app = Eve(auth=RolesAuth)
 if 'DYNO' in os.environ: # only trigger SSLify if the app is running on Heroku
-    sslify = SSLify(app,permanent=True)
+    sslify = SSLify(app,permanent=True, subdomains=True)
 
+# app.on_pre_POST_anvandaren += custom.pre_anvandaren_post_callback
+app.on_insert_anvandaren += custom.ch_pass
 if __name__ == '__main__':
     app.run(host=host, port=port)
