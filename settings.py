@@ -55,7 +55,9 @@ ALLOWED_WRITE_ROLES = ["Super", "Master"]
 ALLOWED_ITEM_WRITE_ROLES = ["Super", "Master"]
 
 X_DOMAINS = "*"
+X_HEADERS = ["Authorization","X-Requested-With"]
 
+PAGINATION = False
 
 # Our API will expose two resources (MongoDB collections): 'people' and
 # 'works'. In order to allow for proper data validation, we define beaviour
