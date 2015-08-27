@@ -28,7 +28,7 @@ MONGO_USERNAME = os.environ.get('MONGO_USERNAME', 'user')
 MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', 'user')
 MONGO_DBNAME = os.environ.get('MONGO_DBNAME', 'evedemo')
 
-#DEBUG = True
+# DEBUG = True
 
 # Enable reads (GET), inserts (POST) and DELETE for resources/collections
 # (if you omit this line, the API will default to ['GET'] and provide
@@ -113,7 +113,7 @@ atletas = {
             },
         },
         "Cedula": {"type": "string"},
-        "Telefonos":{"type":"list","schema": {"type": "integer"}},
+        "Telefonos":{"type": "list", "schema": {"type": "number"}},
         "FechaNacimiento": {"type": "string"},
         "Genero": {"type": "string", "allowed": ["Masculino", "Femenino"]},
         "Lateralidad": {"type": "string", "allowed": ["Izquierda", "Derecha"]},
