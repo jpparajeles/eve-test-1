@@ -55,7 +55,7 @@ ALLOWED_WRITE_ROLES = ["Super", "Master"]
 ALLOWED_ITEM_WRITE_ROLES = ["Super", "Master"]
 
 X_DOMAINS = "*"
-X_HEADERS = ["Authorization","X-Requested-With","Content-Type"]
+X_HEADERS = ["Authorization","X-Requested-With","Content-Type","If-Match"]
 
 PAGINATION = False
 
