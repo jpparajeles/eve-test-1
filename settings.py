@@ -28,6 +28,7 @@ MONGO_USERNAME = os.environ.get('MONGO_USERNAME', 'user')
 MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', 'user')
 MONGO_DBNAME = os.environ.get('MONGO_DBNAME', 'evedemo')
 
+#DEBUG = True
 
 # Enable reads (GET), inserts (POST) and DELETE for resources/collections
 # (if you omit this line, the API will default to ['GET'] and provide
@@ -117,8 +118,8 @@ atletas = {
         "Genero": {"type": "string", "allowed": ["Masculino", "Femenino"]},
         "Lateralidad": {"type": "string", "allowed": ["Izquierda", "Derecha"]},
         "TipoSangre": {"type": "string", "allowed": ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]},
-        "Peso": {"type": "Number"},
-        "Estatura": {"type": "Number"},
+        "Peso": {"type": "number"},
+        "Estatura": {"type": "number"},
         "Beneficiario": {
             "type": "dict",
             "schema": {
@@ -155,11 +156,11 @@ resultados = {
                 'embeddable': True
             },
         },
-        "Carril": {"type": "Number"},
-        "Hit": {"type": "Number"},
-        "TiempoRegistro": {"type": "Number"},
-        "TiempoRealizado": {"type": "Number"},
-        "Puntos": {"type": "Number"}
+        "Carril": {"type": "number"},
+        "Hit": {"type": "number"},
+        "TiempoRegistro": {"type": "number"},
+        "TiempoRealizado": {"type": "number"},
+        "Puntos": {"type": "number"}
     }
 }
 

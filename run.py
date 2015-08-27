@@ -25,8 +25,6 @@ import custom
 class RolesAuth(BasicAuth):
     def check_auth(self, username, password, allowed_roles, resource, method):
         # use Eve's own db driver; no additional connections/resources are used
-        print(username)
-        print(password)
         accounts = app.data.driver.db['anvandaren']
         lookup = {'anvandarnamn': username}
         if allowed_roles:
@@ -54,5 +52,6 @@ if 'DYNO' in os.environ: # only trigger SSLify if the app is running on Heroku
 
 # app.on_pre_POST_anvandaren += custom.pre_anvandaren_post_callback
 app.on_insert_anvandaren += custom.ch_pass
+
 if __name__ == '__main__':
     app.run(host=host, port=port)
