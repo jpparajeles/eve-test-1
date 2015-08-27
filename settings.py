@@ -113,7 +113,7 @@ atletas = {
             },
         },
         "Cedula": {"type": "string"},
-        "Telefonos": {"type": "list", "schema": {"type": "number"}},
+        "Telefonos": {"type": "string"},
         "FechaNacimiento": {"type": "string"},
         "Genero": {"type": "string", "allowed": ["Masculino", "Femenino"]},
         "Lateralidad": {"type": "string", "allowed": ["Izquierda", "Derecha"]},
