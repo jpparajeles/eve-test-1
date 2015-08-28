@@ -85,7 +85,7 @@ ediciones = {
     }
 }
 
-pruebas = {
+eventos = {
     "schema": {
         "Nombre": {"type": "string"},
         "Genero": {"type": "string", 'allowed': ['Masculino', 'Femenino', 'Mixto']}
@@ -106,6 +106,7 @@ atletas = {
     "schema": {
         'Nombre': {
             'type': 'objectid',
+            'unique': True,
             'data_relation': {
                 'resource': 'atletanombres',
                 'field': '_id',
@@ -113,6 +114,8 @@ atletas = {
             },
         },
         "Cedula": {"type": "string"},
+        "Carne": {"type": "string"},
+        "Correo": {"type": "string"},
         "Telefonos": {"type": "string"},
         "FechaNacimiento": {"type": "string"},
         "Genero": {"type": "string", "allowed": ["Masculino", "Femenino"]},
@@ -140,10 +143,10 @@ resultados = {
                 'embeddable': True
             },
         },
-        'Prueba': {
+        'Evento': {
             'type': 'objectid',
             'data_relation': {
-                'resource': 'pruebas',
+                'resource': 'eventos',
                 'field': '_id',
                 'embeddable': True
             },
@@ -271,7 +274,7 @@ DOMAIN = {
     "torneos": torneos,
     "atletas": atletas,
     "atletanombres": atletanombres,
-    "pruebas": pruebas,
+    "eventos": eventos,
     "resultados": resultados,
     "anvandaren": anvandaren
 }
