@@ -179,6 +179,15 @@ anvandaren = {
     "public_item_methods": []
 }
 
+log = {
+    "shema":
+        {"user":{"type":"string"}},
+    "public_methods": [],
+    "public_item_methods": [],
+    "resource_methods":["post"],
+    "item_methods":[]
+}
+
 """
 people = {
     # 'title' tag used in item links.
@@ -276,5 +285,6 @@ DOMAIN = {
     "atletanombres": atletanombres,
     "eventos": eventos,
     "resultados": resultados,
-    "anvandaren": anvandaren
+    "anvandaren": anvandaren,
+    "log":log
 }
