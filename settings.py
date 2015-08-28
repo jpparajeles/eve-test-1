@@ -184,7 +184,7 @@ log = {
         {"user":{"type":"string"}},
     "public_methods": [],
     "public_item_methods": [],
-    "resource_methods":["post"],
+    "resource_methods":["POST"],
     "item_methods":[]
 }
 
