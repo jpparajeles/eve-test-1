@@ -82,7 +82,7 @@ ediciones = {
                 'embeddable': True
             },
         },
-        "fecha": {"type": "string"}
+        "fecha": {"type": "number"}
     }
 }
 
@@ -118,7 +118,7 @@ atletas = {
         "Carne": {"type": "string"},
         "Correo": {"type": "string"},
         "Telefonos": {"type": "string"},
-        "FechaNacimiento": {"type": "string"},
+        "FechaNacimiento": {"type": "number"},
         "Genero": {"type": "string", "allowed": ["Masculino", "Femenino"]},
         "Lateralidad": {"type": "string", "allowed": ["Izquierda", "Derecha"]},
         "TipoSangre": {"type": "string", "allowed": ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]},
