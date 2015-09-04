@@ -40,11 +40,6 @@ RESOURCE_METHODS = ['GET', 'POST', 'DELETE']
 # (defaults to read-only item access).
 ITEM_METHODS = ['GET', 'PATCH', 'DELETE']
 
-# We enable standard client cache directives for all resources exposed by the
-# API. We can always override these global settings later.
-CACHE_CONTROL = 'max-age=20'
-CACHE_EXPIRES = 20
-
 # Public Read
 PUBLIC_METHODS = ['GET']
 PUBLIC_ITEM_METHODS = ['GET']
