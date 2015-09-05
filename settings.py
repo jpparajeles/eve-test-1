@@ -81,34 +81,39 @@ ediciones = {
     }
 }
 
-eventos = {
-    "schema": {
-        "Nombre": {"type": "string"},
-        "Genero": {"type": "string", 'allowed': ['Masculino', 'Femenino', 'Mixto']}
+eventotipos = {
+    "schema":{
+        "Nombre":{"type":"string"}
     }
 }
 
-atletanombres = {
+eventos = {
     "schema": {
         "Nombre": {"type": "string"},
-        "Apellido1": {"type": "string"},
-        "Apellido2": {"type": "string"},
-        "Imagen": {"type": "string"},
-        "Carrera": {"type": "string"}
+        "Genero": {"type": "string", 'allowed': ['Masculino', 'Femenino', 'Mixto']},
+        'Tipo': {
+            'type': 'objectid',
+            'data_relation': {
+                'resource': 'eventotipos',
+                'field': '_id',
+                'embeddable': True
+            },
+        },
     }
 }
 
 atletas = {
     "schema": {
         'Nombre': {
-            'type': 'objectid',
-            'unique': True,
-            'data_relation': {
-                'resource': 'atletanombres',
-                'field': '_id',
-                'embeddable': True
-            },
+            "type": "dict",
+            "schema": {
+                "Nombre": {"type": "string"},
+                "Apellido1": {"type": "string"},
+                "Apellido2": {"type": "string"},
+            }
         },
+        "Imagen": {"type": "string"},
+        "Carrera": {"type": "string"},
         "Cedula": {"type": "string"},
         "Carne": {"type": "string"},
         "Correo": {"type": "string"},
@@ -134,7 +139,7 @@ resultados = {
         'Atleta': {
             'type': 'objectid',
             'data_relation': {
-                'resource': 'atletanombres',
+                'resource': 'atletas',
                 'field': '_id',
                 'embeddable': True
             },
@@ -194,7 +199,6 @@ DOMAIN = {
     "ediciones": ediciones,
     "torneos": torneos,
     "atletas": atletas,
-    "atletanombres": atletanombres,
     "eventos": eventos,
     "resultados": resultados,
     "anvandaren": anvandaren,
