@@ -51,6 +51,9 @@ ALLOWED_ITEM_READ_ROLES = ["User", "Super", "Master"]
 ALLOWED_WRITE_ROLES = ["Super", "Master"]
 ALLOWED_ITEM_WRITE_ROLES = ["Super", "Master"]
 
+CACHE_CONTROL = "private, max-age=0, no-cache"
+CACHE_EXPIRES = 0
+
 X_DOMAINS = "*"
 X_HEADERS = ["Authorization", "X-Requested-With", "Content-Type", "If-Match"]
 
