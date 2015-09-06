@@ -203,6 +203,7 @@ DOMAIN = {
     "torneos": torneos,
     "atletas": atletas,
     "eventos": eventos,
+    "eventotipos":eventotipos ,
     "resultados": resultados,
     "anvandaren": anvandaren,
     "log":log
