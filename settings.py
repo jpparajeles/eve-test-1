@@ -68,6 +68,12 @@ torneos = {
     }
 }
 
+carreras = {
+    "schema": {
+        "Nombre": {"type": "string"}
+    }
+}
+
 ediciones = {
     'item_title': 'edicion',
     "schema": {
@@ -116,7 +122,14 @@ atletas = {
             }
         },
         "Imagen": {"type": "string"},
-        "Carrera": {"type": "string"},
+        "Carrera": {
+            'type': 'objectid',
+            'data_relation': {
+                'resource': 'carreras',
+                'field': '_id',
+                'embeddable': True
+            },
+        },
         "Cedula": {"type": "string"},
         "Carne": {"type": "string"},
         "Correo": {"type": "string"},
