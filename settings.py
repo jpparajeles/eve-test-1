@@ -219,5 +219,6 @@ DOMAIN = {
     "eventotipos":eventotipos ,
     "resultados": resultados,
     "anvandaren": anvandaren,
-    "log":log
+    "log":log,
+    "carreras":carreras
 }
