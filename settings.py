@@ -112,6 +112,8 @@ eventos = {
 }
 
 atletas = {
+    "allowed_roles": ["User","Super","Master"],
+    "allowed_write_roles": ["User","Super","Master"],
     "schema": {
         'Nombre': {
             "type": "dict",
