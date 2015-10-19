@@ -52,6 +52,7 @@ if 'DYNO' in os.environ: # only trigger SSLify if the app is running on Heroku
 
 # app.on_pre_POST_anvandaren += custom.pre_anvandaren_post_callback
 app.on_insert_anvandaren += custom.ch_pass
+app.on_insert_anvandaren += custom.ch_pass_u
 app.on_insert_log += custom.log_log
 
 if __name__ == '__main__':
