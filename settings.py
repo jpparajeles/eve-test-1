@@ -28,7 +28,7 @@ MONGO_USERNAME = os.environ.get('MONGO_USERNAME', 'user')
 MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', 'user')
 MONGO_DBNAME = os.environ.get('MONGO_DBNAME', 'evedemo')
 
-DEBUG = True
+#DEBUG = True
 
 # Enable reads (GET), inserts (POST) and DELETE for resources/collections
 # (if you omit this line, the API will default to ['GET'] and provide
@@ -183,7 +183,7 @@ resultados = {
     }
 }
 anvandaren = {
-    "allowed_roles": ["Master"],
+    "allowed_read_roles": ["Master"],
     "allowed_write_roles": ["Master"],
     "schema": {
         "anvandarnamn": {"type": "string", 'unique': True, 'minlength': 5},
