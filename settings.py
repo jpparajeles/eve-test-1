@@ -24,8 +24,8 @@ import os
 # Heroku, sensible DB connection settings are stored in environment variables.
 MONGO_HOST = os.environ.get('MONGO_HOST', 'localhost')
 MONGO_PORT = os.environ.get('MONGO_PORT', 27017)
-MONGO_USERNAME = os.environ.get('MONGO_USERNAME', 'user')
-MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', 'user')
+#MONGO_USERNAME = os.environ.get('MONGO_USERNAME', 'user')
+#MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', 'user')
 MONGO_DBNAME = os.environ.get('MONGO_DBNAME', 'evedemo')
 
 
@@ -191,7 +191,6 @@ anvandaren = {
         "losenord": {"type": "string"},
         "roll": {"type": "string", "allowed": ["User", "Super", "Master"]}
     },
-
     "public_methods": [],
     "public_item_methods": []
 }
