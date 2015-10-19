@@ -183,18 +183,19 @@ resultados = {
         "Puntos": {"type": "number"}
     }
 }
-
 anvandaren = {
+    "allowed_roles": ["Master"],
+    "allowed_write_roles": ["Master"],
     "schema": {
         "anvandarnamn": {"type": "string", 'unique': True, 'minlength': 5},
         "losenord": {"type": "string"},
         "roll": {"type": "string", "allowed": ["User", "Super", "Master"]}
     },
-    "allowed_roles": ["Master"],
-    "allowed_write_roles": ["Master"],
+
     "public_methods": [],
     "public_item_methods": []
 }
+
 
 log = {
     "schema":{
