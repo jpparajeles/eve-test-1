@@ -28,7 +28,6 @@ MONGO_USERNAME = os.environ.get('MONGO_USERNAME', 'user')
 MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', 'user')
 MONGO_DBNAME = os.environ.get('MONGO_DBNAME', 'evedemo')
 
-
 DEBUG = True
 
 # Enable reads (GET), inserts (POST) and DELETE for resources/collections
@@ -91,8 +90,8 @@ ediciones = {
 }
 
 eventotipos = {
-    "schema":{
-        "Nombre":{"type":"string"}
+    "schema": {
+        "Nombre": {"type": "string"}
     }
 }
 
@@ -195,14 +194,13 @@ anvandaren = {
     "public_item_methods": []
 }
 
-
 log = {
-    "schema":{
-        "user":{"type":"string"}},
+    "schema": {
+        "user": {"type": "string"}},
     "public_methods": [],
     "public_item_methods": [],
-    "resource_methods":["POST"],
-    "item_methods":[]
+    "resource_methods": ["POST"],
+    "item_methods": []
 }
 
 
@@ -216,9 +214,9 @@ DOMAIN = {
     "torneos": torneos,
     "atletas": atletas,
     "eventos": eventos,
-    "eventotipos":eventotipos ,
+    "eventotipos": eventotipos,
     "resultados": resultados,
     "anvandaren": anvandaren,
-    "log":log,
-    "carreras":carreras
+    "log": log,
+    "carreras": carreras
 }

@@ -24,6 +24,7 @@ import custom
 
 class RolesAuth(BasicAuth):
     def check_auth(self, username, password, allowed_roles, resource, method):
+        print(allowed_roles)
         # use Eve's own db driver; no additional connections/resources are used
         accounts = app.data.driver.db['anvandaren']
         lookup = {'anvandarnamn': username}
