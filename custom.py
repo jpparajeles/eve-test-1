@@ -9,7 +9,8 @@ def ch_pass(list):
 
 
 def ch_pass_u(update, _):
-    update["losenord"] = bcrypt.hashpw(update["losenord"], bcrypt.gensalt())
+    if "losenord" in update.keys():
+        update["losenord"] = bcrypt.hashpw(update["losenord"], bcrypt.gensalt())
 
 
 def log_log(list):
